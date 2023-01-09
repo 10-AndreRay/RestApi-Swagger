@@ -1,4 +1,4 @@
-package com.dev.restapi.repositories;
+package com.dev.restapi.service;
 
 import com.dev.restapi.models.User;
 import org.springframework.stereotype.Repository;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class UserRepository {
+public class UserService {
     public User save(User user) {
         if(user.getId() == null)
             System.out.println("Salvando novo usuário!");
@@ -22,7 +22,6 @@ public class UserRepository {
     }
 
     public List<User> findAll() {
-        System.out.println("-==Listando todos os usuários==-");
 
         List<User> users = new ArrayList<>();
         users.add(new User("Andre", "senhadoandre"));

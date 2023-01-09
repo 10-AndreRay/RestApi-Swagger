@@ -1,7 +1,7 @@
 package com.dev.restapi.controllers;
 
 import com.dev.restapi.models.User;
-import com.dev.restapi.repositories.UserRepository;
+import com.dev.restapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,30 +11,30 @@ import java.util.List;
 @RequestMapping("/api/v1/")
 public class ApiController {
     @Autowired
-    UserRepository userRepository;
+    UserService userService;
 
     @GetMapping("users/all")
     public List<User> listAll() {
-        return userRepository.findAll();
+        return userService.findAll();
     }
 
     @GetMapping("user/id/{id}")
     public User findById(@PathVariable("id") Integer id) {
-        return userRepository.findById(id);
+        return userService.findById(id);
     }
 
     @GetMapping("user/username/{username}")
     public User findByUsername(@PathVariable("username") String username) {
-        return userRepository.findByUsername(username);
+        return userService.findByUsername(username);
     }
 
     @PostMapping("user/save")
     public User save(@RequestBody User user) {
-        return userRepository.save(user);
+        return userService.save(user);
     }
 
     @DeleteMapping("user/delete/{id}")
     public String deleteById(@PathVariable("id") Integer id) {
-        return userRepository.deleteById(id);
+        return userService.deleteById(id);
     }
 }
